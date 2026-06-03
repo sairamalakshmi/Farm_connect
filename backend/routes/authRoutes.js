@@ -73,6 +73,42 @@ router.post("/login", async (req, res) => {
   }
 });
 
+// Update User Profile
+router.put("/update/:id", async (req, res) => {
+  console.log("BODY:", req.body);
+  try {
+    const { id } = req.params;
+
+    const {
+      name,
+      email,
+      phone
+    } = req.body || {};
+
+    const result = await pool.query(
+      `UPDATE users
+       SET name = $1,
+           email = $2,
+           phone = $3
+       WHERE id = $4
+       RETURNING *`,
+      [name, email, phone, id]
+    );
+
+    res.json({
+      message: "Profile Updated Successfully",
+      user: result.rows[0]
+    });
+
+  } catch (err) {
+    console.log(err);
+
+    res.status(500).json({
+      error: err.message
+    });
+  }
+});
+
 
 
 module.exports = router;

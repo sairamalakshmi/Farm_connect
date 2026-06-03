@@ -4,8 +4,19 @@ import {
   PlusCircle,
   LogOut,
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 function Sidebar({ activeSection, setActiveSection }) {
+
+  const navigate = useNavigate();
+
+const handleLogout = () => {
+  localStorage.clear();
+
+  alert("Logged Out Successfully");
+
+  navigate("/login");
+};
   const menuItems = [
     {
       key: "dashboard",
@@ -59,10 +70,13 @@ function Sidebar({ activeSection, setActiveSection }) {
       </nav>
 
       {/* Logout */}
-      <button className="flex items-center gap-3 px-4 py-3 mt-6 rounded-lg hover:bg-red-500 transition">
-        <LogOut size={20} />
-        <span className="text-sm font-medium">Logout</span>
-      </button>
+      <button
+  onClick={handleLogout}
+  className="flex items-center gap-3 px-4 py-3 mt-6 rounded-lg hover:bg-red-500 transition"
+>
+  <LogOut size={20} />
+  <span className="text-sm font-medium">Logout</span>
+</button>
     </div>
   );
 }
