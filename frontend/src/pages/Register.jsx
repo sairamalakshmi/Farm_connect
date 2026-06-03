@@ -86,6 +86,7 @@ function Register() {
 
           <select
             name="role"
+            value={formData.role}
             onChange={handleChange}
             className="w-full border p-3 rounded-xl"
           >

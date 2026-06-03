@@ -69,7 +69,7 @@ function AddProduct() {
           required
         />
 
-        <input
+        <select
           type="text"
           name="category"
           placeholder="Category"
@@ -77,7 +77,12 @@ function AddProduct() {
           onChange={handleChange}
           className="w-full border p-3 rounded"
           required
-        />
+          >
+          <option value="">Select Category</option>
+          <option value="Vegetable">Vegetable</option>
+          <option value="Fruit">Fruit</option>
+          <option value="Grain">Grain</option>
+          </select>
 
 
         <input
