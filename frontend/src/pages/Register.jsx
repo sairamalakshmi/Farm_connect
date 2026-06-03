@@ -3,6 +3,8 @@ import axios from "axios";
 import { useNavigate} from "react-router-dom";
 import { Link } from "react-router-dom";
 
+const API = "https://farm-connect-2-21us.onrender.com";
+
 function Register() {
   const navigate = useNavigate();
 
@@ -26,7 +28,7 @@ function Register() {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/auth/register",
+        `${API}/api/auth/register`,
         formData
       );
 

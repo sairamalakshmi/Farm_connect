@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { ShoppingCart, Search } from "lucide-react";
+import { Search } from "lucide-react";
+
+const API = "https://farm-connect-2-21us.onrender.com";
 
 function Products() {
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("All");
   const [cart, setCart] = useState([]);
+  
 
   useEffect(() => {
     fetchProducts();
@@ -15,7 +18,7 @@ function Products() {
   const fetchProducts = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/products"
+        `${API}/api/products`
       );
 
       setProducts(res.data);

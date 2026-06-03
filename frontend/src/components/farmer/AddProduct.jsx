@@ -1,6 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 
+const API = "https://farm-connect-2-21us.onrender.com";
+
 function AddProduct() {
 
   const user = JSON.parse(
@@ -28,7 +30,7 @@ function AddProduct() {
 
     try {
       await axios.post(
-        "http://localhost:5000/api/products/add",
+        `${API}/api/products/add`,
         {
           ...formData,
           farmer_id: user.id,

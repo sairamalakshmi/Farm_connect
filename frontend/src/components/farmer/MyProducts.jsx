@@ -3,6 +3,8 @@ import axios from "axios";
 import ProductCard from "./ProductCard";
 import { Package } from "lucide-react";
 
+const API = "https://farm-connect-2-21us.onrender.com";
+
 function MyProducts() {
   const [products, setProducts] = useState([]);
 
@@ -30,7 +32,7 @@ function MyProducts() {
   const fetchProducts = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/products/farmer/${user.id}`
+        `${API}/api/products/farmer/${user.id}`
       );
 
       setProducts(res.data);
@@ -52,7 +54,7 @@ function MyProducts() {
 
     try {
       await axios.delete(
-        `http://localhost:5000/api/products/delete/${id}`
+        `${API}/api/products/delete/${id}`
       );
 
       setProducts((prev) =>
@@ -84,7 +86,7 @@ function MyProducts() {
 const updateProduct = async () => {
   try {
     await axios.put(
-      `http://localhost:5000/api/products/update/${editId}`,
+      `${API}/api/products/update/${editId}`,
       formData
     );
 

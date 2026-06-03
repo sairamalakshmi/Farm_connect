@@ -2,6 +2,7 @@ import { User, Mail, Shield } from "lucide-react";
 import { useState } from "react";
 import axios from "axios";
 
+const API = "https://farm-connect-2-21us.onrender.com";
 function Profile() {
   const user = JSON.parse(localStorage.getItem("user"));
 
@@ -25,7 +26,7 @@ function Profile() {
         console.log("Sending:", formData);
 
       const res = await axios.put(
-        `http://localhost:5000/api/auth/update/${user.id}`,
+        `${API}/api/auth/update/${user.id}`,
         formData,
       );
 
